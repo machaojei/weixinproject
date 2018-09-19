@@ -1,0 +1,24 @@
+<view class="container">
+<view class="list-item">
+            <text>填写预定信息</text>
+</view>
+    <view class="my">
+        <text class="headline">预定款式</text>
+        <input class='my.p' type='text' placeholder='必填'   id='clothstyle' bindconfirm='styleConfirm' ></input>
+   </view> 
+    <view class="my">
+        <text class="headline" >姓名</text>
+        <input class='my.p' type='text' placeholder='必填'  id='name'  bindconfirm='nameConfirm'></input>
+   </view> 
+    <view class="my" >
+        <text class="headline">电话</text>
+        <input class='my.p' type='text' placeholder='必填'  id='phone' bindconfirm='phoneConfirm'></input>
+   </view> 
+    <view class="my" >
+        <text class="headline">联系地址</text>
+        <input class='my.p' type='text' id='address' placeholder='可不填' bindconfirm='addressConfirm'></input>
+   </view> 
+
+  <button class="my.comfirmBtn"   bindtap="confirm"  >提交 </button>
+
+</view>
