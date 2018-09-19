@@ -1,24 +1,38 @@
 <view class="container">
-<view class="list-item">
-            <text>填写预定信息</text>
-</view>
-    <view class="my">
-        <text class="headline">预定款式</text>
-        <input class='my.p' type='text' placeholder='必填'   id='clothstyle' bindconfirm='styleConfirm' ></input>
-   </view> 
-    <view class="my">
-        <text class="headline" >姓名</text>
-        <input class='my.p' type='text' placeholder='必填'  id='name'  bindconfirm='nameConfirm'></input>
-   </view> 
-    <view class="my" >
-        <text class="headline">电话</text>
-        <input class='my.p' type='text' placeholder='必填'  id='phone' bindconfirm='phoneConfirm'></input>
-   </view> 
-    <view class="my" >
-        <text class="headline">联系地址</text>
-        <input class='my.p' type='text' id='address' placeholder='可不填' bindconfirm='addressConfirm'></input>
-   </view> 
+  <form bindreset="confirm">
 
-  <button class="my.comfirmBtn"   bindtap="confirm"  >提交 </button>
 
+ <view class="list-item" bindtap="doUpload">
+      <text>点这里上传图片</text>
+    </view>
+    <!-- <view class="list-item">
+      <image class="image"  src="../../images/image.png" mode="aspectFit"></image>
+    </view> -->
+    <view class="my">
+      <text class="headline">预定款式</text>
+      <input class='my.p' type='text' placeholder='必填' id='clothstyle' data-name="clothstyle" bindblur='styleConfirm'></input>
+    </view>
+    <view class="my">
+      <text class="headline">姓名</text>
+      <input class='my.p' type='text' placeholder='必填' id='name' data-name="name" bindblur='nameConfirm'></input>
+    </view>
+    <view class="my">
+      <text class="headline">电话</text>
+      <input class='my.p' type='text' placeholder='必填' id='phone' data-name="phone" bindblur='phoneConfirm'></input>
+    </view>
+    <view class="my">
+      <text class="headline">联系地址</text>
+      <input class='my.p' type='text' id='address' placeholder='可不填' data-name="address" bindblur='addressConfirm'></input>
+    </view>
+    <view class="my">
+      <text class="headline">定金</text>
+      <input class='my.p' type='text' id='address' placeholder='可不填' data-name="price" bindblur='priceConfirm'></input>
+    </view>
+    <view class="my">
+      <text class="headline">备注</text>
+      <input class='my.p' type='text' id='address' placeholder='可不填' data-name="memo" bindblur='memoConfirm'></input>
+    </view>
+
+    <button class="my.comfirmBtn"  form-type="reset">提交 </button>
+  </form>
 </view>

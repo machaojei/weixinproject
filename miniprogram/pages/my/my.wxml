@@ -2,14 +2,25 @@
 
   <!-- 用户 信息 -->
   <view class="userinfo">
-  <open-data  class="userinfo-avatar"  type="userAvatarUrl"></open-data>
-  <!-- 昵称 -->
+    <open-data class="userinfo-avatar" type="userAvatarUrl"></open-data>
+    <!-- 昵称 -->
     <view class="user">
-        <text class="userinfo-nickname" >昵称:</text>
-        <open-data class="userinfo-nickname"  type="userNickName"></open-data>
-      </view>
+      <!-- <text class="userinfo-nickname">昵称:</text> -->
+      <open-data class="userinfo-nickname" type="userNickName"></open-data>
+    </view>
   </view>
-<!-- 我的订单 -->
+  <!-- 我的订单数量 -->
+  <view class="my-item">
+    <navigator class="uploader-text" url="../myorder/myorder" open-type="navigate">
+      <text>已经预定的订单</text>
+    </navigator>
+    <image class='uploader-image' src='../../images/icon_blue_back.png' mode="aspectFit">   </image>
+  </view>
 
-
-   </view>
+  <!-- 我的订单总价
+  <view class="my-item">
+    <view class="uploader-text">
+      <text>收款:{{ordertotalprice}}元</text>
+    </view>
+  </view> -->
+</view>

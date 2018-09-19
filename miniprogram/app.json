@@ -4,7 +4,7 @@
     "pages/index/index",
     "pages/order/order",
     "pages/my/my",
-    "pages/userConsole/userConsole",
+    "pages/myorder/myorder",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
     "pages/addFunction/addFunction",
@@ -20,7 +20,7 @@
     },
     {
       "pagePath": "pages/order/order",
-      "text": "预定"
+      "text": "下单"
     },
     {
       "pagePath":"pages/my/my",
@@ -33,7 +33,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTitleText": "订单管理",
     "navigationBarTextStyle": "black"
   }
 }

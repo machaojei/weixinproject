@@ -1,24 +1,18 @@
-
 const app = getApp()
+const db = wx.cloud.database()
 
 Page({
   data: {
-    openid:'',
+    openid: getApp().globalData.openid,
+    ordernum: '',
+    ordertotalprice: '',
     logged: false,
     takeSession: false,
     requestResult: ''
   },
 
-  onLoad: function () {
-    openid = getApp().globalData.openid
-    if (!wx.cloud) {
-      wx.redirectTo({
-        url: '../index/index',
-      })
-      return
-    }
- 
-},
+  onLoad: function() {
+  },
 
 
 })
