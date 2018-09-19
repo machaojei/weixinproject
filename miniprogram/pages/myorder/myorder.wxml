@@ -1,13 +1,18 @@
 <!--pages/userConsole/userConsole.wxml-->
 <view class="container">
 
-  <view class="list">
-    <view class="list-item" bindtap="testCgi">
-      <text class="request-text">用户 openid 获取成功</text>
-    </view>
-    <view class="list-item" bindtap="testCgi">
-      <text class="request-text">{{openid}}</text>
-    </view>
-  </view>
+<!-- tradeList是要循环的数组，内部的属性通过item.xxx的方式调用 -->
+ <block wx:for='{{orderList}}'>
+   <!-- data-*属性在触发事件时获取  -->
+   <view class='singleTrade' hover-class='item-press' catchtap='showTradeDetail' data-id='{{item._id}}'>
+     <image src='{{item.cloudPath}}' class='img' />
+     <view class='a'>
+       <view class='name'>{{item.name}}</view>
+     </view>
+     <view class='b'>
+       <view class='price'>{{item.phone}}</view>
+     </view>
+   </view>
+ </block>
 
 </view>
