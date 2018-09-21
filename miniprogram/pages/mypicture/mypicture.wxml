@@ -1,0 +1,6 @@
+<view class="imagecontainer">
+
+<image src='{{item.cloudPath}}' wx:if="{{index % 2 != 0 }}" wx:for="{{imageList}}" mode='widthFix' wx:key="{{index}}"  bindtap='previewImage'  data-src="{{item.cloudPath}}"></image>     
+ <image src='{{item.cloudPath}}' wx:if="{{index % 2 == 0 }}" wx:for="{{imageList}}" mode='widthFix' wx:key="{{index}}"  bindtap='previewImage' data-src="{{item.cloudPath}}"></image>
+
+</view>

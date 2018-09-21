@@ -10,7 +10,7 @@
     </view> -->
     <view class="my">
       <text class="headline">预定款式</text>
-      <input class='my.p' type='text' placeholder='必填' id='clothstyle' data-name="clothstyle" bindblur='styleConfirm'></input>
+      <input class='my.p' type='text' placeholder='可不填' id='clothstyle' data-name="clothstyle" bindblur='styleConfirm'></input>
     </view>
     <view class="my">
       <text class="headline">姓名</text>

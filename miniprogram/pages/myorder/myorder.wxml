@@ -1,18 +1,19 @@
 <!--pages/userConsole/userConsole.wxml-->
 <view class="container">
 
-<!-- tradeList是要循环的数组，内部的属性通过item.xxx的方式调用 -->
- <block wx:for='{{orderList}}'>
-   <!-- data-*属性在触发事件时获取  -->
-   <view class='singleTrade' hover-class='item-press' catchtap='showTradeDetail' data-id='{{item._id}}'>
-     <image src='{{item.cloudPath}}' class='img' />
-     <view class='a'>
-       <view class='name'>{{item.name}}</view>
-     </view>
-     <view class='b'>
-       <view class='price'>{{item.phone}}</view>
-     </view>
-   </view>
- </block>
+  <view class="singleTrade" wx:for="{{orderList}}" wx:for-item="item">
+    <image class="img" src="{{item.cloudPath}}"  mode = "aspectFill" data-src="{{item.cloudPath}}" bindtap='previewImage'>
+    </image>
 
+    <view class="a">
+      <view class="name"> 姓名:{{item.name}}</view>
+     <view class="name"> 定金:￥{{item.price}}</view>
+      <view class="price" bindtap="bindViewTap" data-phone='{{item.phone}}'> 手机号:{{item.phone}}</view>
+      <view class="name"> 住址:{{item.address}}</view>
+    </view>
+    <view class = "order">
+  <text class = "status-wait">{{item.orderstatus == 1?'待取货':'已取走'}} </text>
+   <button class = "buttonstyle" bindtap='confirmorder'  data-name='{{item.name}}' data-phone='{{item.phone}}' data-orderstatus='{{item.orderstatus}}'>{{item.orderstatus == 1?'确认取走':'联系顾客'}} </button>
+    </view>
+</view>
 </view>

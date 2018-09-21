@@ -1,9 +1,12 @@
 /* pages/userConsole/userConsole.wxss */
 
 @import "../../style/guide.wxss";
+
 .singleTrade {
   background: #fff;
-  padding: 20rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+    width: 90%;
   display: flex;
   border-bottom: 20rpx solid #fafafa;
 }
@@ -34,6 +37,13 @@
   justify-content: space-around;
 }
 
+.order{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .b {
   display: flex;
   flex-direction: column;
@@ -42,10 +52,45 @@
 }
 
 .price {
-  font-size: 11pt;
+       /* color: #007aff; */
+  font-size: 10pt;
 }
 
+.buttonstyle {
+  color:#007aff;
+  align-items: center;
+  justify-content: center;
+  margin: 5rpx;
+  font-size: 8pt;
+}
 .name {
+       /* color: #007aff; */
+  font-size: 10pt;
+  line-height: 50rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.status-complete {
+   color: #ff0000;
+   height: 20rpx;
+  font-size: 11pt;
+  line-height: 50rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.status-wait {
+     /* color: #ff0000; */
+     color: #007aff;
   font-size: 11pt;
   line-height: 50rpx;
   display: -webkit-box;

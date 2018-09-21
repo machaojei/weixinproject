@@ -1,30 +1,34 @@
 {
   "cloud": true,
   "pages": [
+    "pages/myorder/myorder",
     "pages/index/index",
     "pages/order/order",
     "pages/my/my",
-    "pages/myorder/myorder",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib"
+    "pages/mypicture/mypicture"
   ],
 
 "tabBar": {
+  "selectedColor":"#3fdf65" ,
   "list": [
     {
-      "pagePath": "pages/index/index",
-      "text": "首页"
+      "pagePath": "pages/myorder/myorder",
+      "text": "首页",
+            "selectedIconPath": "images/icon_home_select.png",
+      "iconPath":"images/icon_home_unselect.png"
+
     },
     {
       "pagePath": "pages/order/order",
-      "text": "下单"
+      "text": "下单",
+                  "selectedIconPath": "images/icon_order_select.png",
+        "iconPath": "images/icon_order_unselect.png"
     },
     {
       "pagePath":"pages/my/my",
-      "text":"我的"
+      "text":"我的",
+                  "selectedIconPath": "images/icon_my_select.png",
+        "iconPath": "images/icon_my_unselect.png"
     }
   ]
 },

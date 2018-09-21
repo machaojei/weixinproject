@@ -20,7 +20,7 @@ exports.main = async (event, context) => {
   const tasks = []
   for (let i = 0; i < batchTimes; i++) {
     const promise = db.collection('subscribe').skip(i * MAX_LIMIT).limit(MAX_LIMIT).where({
-      _openid: openid
+      _openid: openid,
     })
       .get()
     tasks.push(promise)

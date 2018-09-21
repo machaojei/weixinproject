@@ -8,7 +8,6 @@
 // var price = '' //定金
 const app = getApp()
 
-var openid = ''
 var userInfo = null
 var common = require("../index/util.js");
 var queryResult = ''
@@ -21,7 +20,9 @@ Page({
     phone: '',
     address: '',
     memo: '',
-    price: '',
+    price: '0',
+    cloudPath: '',
+    fileID: '',
     requestResult: '',
     showOrHidden: false, //判断显示与否的，true表示显示，反之隐藏
     canIUseClipboard: wx.canIUse('setClipboardData')
@@ -31,7 +32,7 @@ Page({
     wx.getUserInfo({
       success: function(res) {
         userInfo = res.userInfo
-        openid = getApp().globalData.openid
+        // openid = app.globalData.openid
       }
     })
   },
@@ -81,16 +82,19 @@ Page({
   // 清空输入框
   reset: function() {
     this.setData({
-      clothstyle: '',
-      name: '',
+      openid: app.globalData.openid,
+      nickname: userInfo.nickName,
+      name:'',
       phone: '',
       address: '',
-      memo: '',
-      price: '',
+      memo:'',
+      price: '0',
+      totalprice: '',
+      cloudPath: '',
+      fileID:'',
+      date: ''
 
     })
-    app.globalData.cloudPath = ''
-    app.globalData.fileID = ''
   },
 
   confirm: function(e) {
@@ -101,9 +105,16 @@ Page({
       })
       return
     }
-    if (this.phone == '') {
+    if (this.data.phone == '') {
       wx.showToast({
         title: '请输入手机号!',
+        icon: 'none'
+      })
+      return
+    }
+    if (this.data.phone.length != 11) {
+      wx.showToast({
+        title: '请输入正确的手机号!',
         icon: 'none'
       })
       return
@@ -115,13 +126,15 @@ Page({
       })
       return
     }
-    console.log('开始插入')
     this.uploadSubscribe() // 插入记录
-
   },
 
   // 插入预约记录
   uploadSubscribe: function() {
+    var that = this
+    wx.showLoading({
+      title: '请稍后',
+    })
     var timestamp = Date.parse(new Date());
     timestamp = timestamp / 1000;
 
@@ -129,33 +142,39 @@ Page({
       // data 字段表示需新增的 JSON 数据
       data: {
         // _id 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
-        _openid: openid,
+        openid: app.globalData.openid,
         nickname: userInfo.nickName,
         name: this.data.name,
         phone: this.data.phone,
         address: this.data.address,
         memo: this.data.memo,
         price: this.data.price,
-        totalprice:'',
-        cloudPath: app.globalData.cloudPath,
-        fileID: app.globalData.fileID,
+        totalprice: '',
+        cloudPath: "https://6261-bazhuayumessage-8ec91f-1257651340.tcb.qcloud.la/" + this.data.cloudPath,
+        fileID: this.data.fileID,
+        orderstatus:1,
         date: timestamp
-
       },
       success: function(res) {
-        console.log('插入成功')
+        wx.hideLoading()
         wx.showToast({
           title: '添加成功!',
         })
-
-        this.reset()
+        that.reset()
+      },
+      fail: function(res) {
+        console.log(res)
+        wx.hideLoading()
+        wx.showToast({
+          title: '添加失败!',
+        })
       }
     })
   },
   // 查询预订记录
   queryRecord: function() {
     db.collection('subscribe').where({
-        _openid: openid
+        openid: app.globalData.openid
       })
       .get({
         success: function(res) {
@@ -169,27 +188,11 @@ Page({
 
       })
   },
-  // 更新已有记录
-  updateRecord: function() {
-    var timestamp = Date.parse(new Date());
-    timestamp = timestamp / 1000;
-
-    db.collection('subscribe').doc(openid).update({
-      // data 传入需要局部更新的数据
-      data: {
-        name: name,
-        phone: phone,
-        address: address,
-        date: timestamp,
-      },
-      success: function(res) {
-        console.log(res.data)
-      }
-    })
-  },
+ 
 
   // 上传图片
   doUpload: function() {
+    var that = this;
     // 选择图片
     wx.chooseImage({
       count: 1,
@@ -200,23 +203,20 @@ Page({
         wx.showLoading({
           title: '上传中',
         })
-
         const filePath = res.tempFilePaths[0]
-
         // 上传图片
-        var timestamp = Date.parse(new Date());
-        timestamp = timestamp / 1000;
-
+        var timestamp = Date.parse(new Date())/1000;
         const cloudPath = 'picture/' + timestamp + filePath.match(/\.[^.]+?$/)[0]
         wx.cloud.uploadFile({
           cloudPath,
           filePath,
           success: res => {
             console.log('[上传文件] 成功：', res)
-
-            app.globalData.fileID = res.fileID
-            app.globalData.cloudPath = cloudPath
-            console.log(cloudPath)
+            that.setData({
+              fileID: res.fileID,
+              cloudPath: cloudPath
+            })
+            console.log(that.data.cloudPath)
           },
           fail: e => {
             console.error('[上传文件] 失败：', e)

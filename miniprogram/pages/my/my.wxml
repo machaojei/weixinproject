@@ -11,16 +11,20 @@
   </view>
   <!-- 我的订单数量 -->
   <view class="my-item">
-    <navigator class="uploader-text" url="../myorder/myorder" open-type="navigate">
-      <text>已经预定的订单</text>
+    <navigator class="uploader-text" url="../myorder/myorder" open-type="switchTab">
+      <text>所有订单({{ordernum}})个</text>
     </navigator>
     <image class='uploader-image' src='../../images/icon_blue_back.png' mode="aspectFit">   </image>
   </view>
 
-  <!-- 我的订单总价
   <view class="my-item">
-    <view class="uploader-text">
-      <text>收款:{{ordertotalprice}}元</text>
-    </view>
-  </view> -->
+        <text class = "uploader-text" bindtap='choose'>上传图片(一次最多九张)</text>
+  </view>
+  <view class="my-item">
+    <navigator class="uploader-text" url="../mypicture/mypicture" open-type="navigate">
+        <text class = "uploader-text">我上传的图片</text>
+            </navigator>
+            <image class='uploader-image' src='../../images/icon_blue_back.png' mode="aspectFill">   </image>
+  </view>
+
 </view>

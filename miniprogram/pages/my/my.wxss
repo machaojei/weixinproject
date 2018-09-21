@@ -23,7 +23,7 @@ page {
 
 .my-item{
   margin-top: 40rpx;
-  height: 120rpx;
+  height: 80rpx;
   width: 100%;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -86,8 +86,8 @@ page {
 }
 
 .uploader-image {
-  width: 40rpx;
-  height: 60rpx;
+  width: 20rpx;
+  height: 40rpx;
     padding: 20rpx 20rpx 20rpx 0;
 }
 
